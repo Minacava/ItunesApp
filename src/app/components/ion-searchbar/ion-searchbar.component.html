@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark  ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+            <li class="nav-item active">
+                    <a [routerLink]="['/Home']" [routerLinkActive]="['active']">
+                        <i class="material-icons">
+                          touch_app
+                          </i>
+                      </a>
+            </li>
+    </div>
+    <ul class="navbar-nav">
+            <form class="form-inline">
+                    <div class="input-group">
+                        <input #imputResult type="text"  (keyup)='searchItem(imputResult.value)'class="form-control" placeholder="Artist" aria-label="Search">
+                      <div (click) = "DisplayNewRelease = !DisplayNewRelease"
+                      class="input-group-prepend">
+                          <i class="material-icons input-group-text">search</i>
+                      </div>
+                    </div>
+                  </form>
+            <i class="material-icons icon text-left">favorite</i>
+          </ul>
+  </nav>
+<app-albums *ngIf= "DisplayNewRelease; else DisplayResults"></app-albums>
+<ng-template #DisplayResults>
+    <div  class="container">
+        <div class="row">
+                <div class="card m-4 mt-1" style="width: 13rem;" *ngFor="let selectedArtists of selectedArtist">
+                        <img class="card-img-top" src="{{selectedArtists.artworkUrl100}}" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">{{selectedArtists.trackName}}</h5>
+                          <p class="card-text">{{selectedArtists.collectionName}}</p>
+                          <i class="material-icons icon text-left">favorite</i>
+                        </div>
+                      </div>
+        </div>
+    </div>
+</ng-template>
+   
+ 

@@ -1,0 +1,16 @@
+<div  class="container">
+<div class="row">
+        <div class="card m-4 mt-1" style="width: 13rem;" *ngFor="let artista of artist">
+                <img class="card-img-top" src="{{artista.artworkUrl100}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{artista.trackName}}</h5>
+                  <p class="card-text">{{artista.collectionName}}</p>
+                  <i class="material-icons icon text-left">favorite</i>
+                </div>
+              </div>
+</div>
+  </div>
+
+
+  
+        
