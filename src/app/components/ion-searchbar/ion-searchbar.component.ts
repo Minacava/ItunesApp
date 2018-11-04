@@ -19,7 +19,7 @@ export class IonSearchbarComponent {
   constructor(private _petitionItunes: PetitionsItunes) {
   }
   public changeColorFav(inputResult) {
-    $('#' + inputResult).toggleClass('active');
+    $('#' + inputResult).text('favorite');
   }
 
   searchItem(inputResult: string) {

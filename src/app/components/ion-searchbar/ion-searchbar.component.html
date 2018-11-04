@@ -6,23 +6,21 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <li class="nav-item active">
       <a>
-        <i class="material-icons">
+        <i class="material-icons fa-rotate">
           touch_app
         </i>
       </a>
     </li>
-  </div>
-  <form class="form-inline ml-5">
-      <div class="input-group">
-        <input #inputResult type="text" (keyup)='searchItem(inputResult.value)' class="form-control" placeholder="Artist"
-          aria-label="Search">
-        <div class="input-group-prepend">
-          <i class="material-icons input-group-text">search</i>
+    <form class="form-inline ml-5">
+        <div class="input-group">
+          <input #inputResult type="text" (keyup)='searchItem(inputResult.value)' class="form-control" placeholder="Artist"
+            aria-label="Search">
+            <i class="material-icons search-icon ">search</i>
         </div>
-      </div>
     </form>
+  </div>
   <ul class="navbar-nav">
-    <i class="material-icons text-left">favorite</i> {{iconcounter}}
+    <i class="material-icons mr-2">favorite </i> {{iconcounter}}
   </ul>
 </nav>
 <app-albums *ngIf="DisplayNewRelease; else DisplayResults"></app-albums>
