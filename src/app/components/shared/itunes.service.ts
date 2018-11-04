@@ -13,13 +13,13 @@ export class PetitionsItunes {
         public _http: HttpClient
     ) {
         this.url = 'http://itunes.apple.com/search?entity=song';
-        this.artistName = 'jack+johnson';
+        this.artistName = 'albums';
     }
     getArtist(): Observable<any> {
         return this._http.get(this.url + '&term=' + this.artistName);
     }
-    searchArtist(imputResult) {
-        return this._http.get(this.url + '&term=' + imputResult);
+    searchArtist(inputResult) {
+        return this._http.get(this.url + '&term=' + inputResult);
     }
 
 }

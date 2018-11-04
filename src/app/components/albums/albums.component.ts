@@ -4,7 +4,7 @@ import { PetitionsItunes } from '../shared/itunes.service';
   selector: 'app-albums',
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.sass'],
-  providers: [ PetitionsItunes ]
+  providers: [PetitionsItunes]
 })
 export class AlbumsComponent implements OnInit {
   public artist: any = [];
@@ -14,23 +14,22 @@ export class AlbumsComponent implements OnInit {
   constructor(
     private _petitionItunes: PetitionsItunes
   ) {
-  this.DisplayNewRelease = true;
+    this.DisplayNewRelease = true;
   }
 
   ngOnInit() {
     this.getDataInfo();
 
-}
-getDataInfo() {
-  this._petitionItunes.getArtist().subscribe(
-    result => {
-      console.log(result);
-      console.log(result.results);
-      this.artist = result.results;
-    },
-    error => {
-      console.log(<any>error);
-    }
-  );
-}
+  }
+  getDataInfo() {
+    this._petitionItunes.getArtist().subscribe(
+      result => {
+        console.log(result.results);
+        this.artist = result.results;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
 }

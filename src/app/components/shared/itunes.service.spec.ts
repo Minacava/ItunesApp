@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ItunesService } from './itunes.service';
+import { PetitionsItunes } from './itunes.service';
 
 describe('ItunesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ItunesService]
+      providers: [PetitionsItunes]
     });
   });
 
-  it('should be created', inject([ItunesService], (service: ItunesService) => {
+  it('should be created', inject([PetitionsItunes], (service: PetitionsItunes) => {
     expect(service).toBeTruthy();
   }));
 });
