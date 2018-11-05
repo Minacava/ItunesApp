@@ -12,7 +12,7 @@ export class PetitionsItunes {
     constructor(
         public _http: HttpClient
     ) {
-        this.url = 'http://itunes.apple.com/search?entity=song';
+        this.url = 'https://itunes.apple.com/search?entity=song';
         this.artistName = 'albums';
     }
     getArtist(): Observable<any> {
