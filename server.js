@@ -2,13 +2,12 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-
+const port = 8080;
 // Serve only the static files form the dist directory
-app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/testAppMarina/index.html'));
-  });
+app.use(express.static(path.join(__dirname, '/dist/testAppMarina/')));
+app.listen(port);
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname + "/dist/testAppMarina/"));
+});
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
