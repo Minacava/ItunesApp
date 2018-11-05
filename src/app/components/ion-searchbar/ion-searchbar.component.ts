@@ -41,7 +41,7 @@ export class IonSearchbarComponent {
   searchItem(inputResult: string) {
     this._petitionItunes.searchArtist(inputResult).subscribe(
       result => {
-       console.log( this.selectedArtist = result['results']);
+       console.log( this.selectedArtist = result.results);
       }, error => {
         console.log(<any>error);
       });
