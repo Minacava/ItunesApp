@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PetitionsItunes } from '../shared/itunes.service';
-import { debounce } from 'rxjs/operators';
-import { of, timer } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 declare var $: any;
 
 @Component({
@@ -42,8 +39,7 @@ export class IonSearchbarComponent {
   searchItem(inputResult: string) {
     this._petitionItunes.searchArtist(inputResult).subscribe(
       result => {
-        console.log(result.results);
-        this.selectedArtist = result.results;
+       return this.selectedArtist = result.results;
       }, error => {
         console.log(<any>error);
       });
