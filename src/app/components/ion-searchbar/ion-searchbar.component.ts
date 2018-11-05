@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PetitionsItunes } from '../shared/itunes.service';
+import { debounce } from 'rxjs/operators';
+import { of, timer } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 declare var $: any;
 
 @Component({
@@ -15,13 +18,27 @@ export class IonSearchbarComponent {
   public favBook: any[];
   public iconcounter;
 
-
   constructor(private _petitionItunes: PetitionsItunes) {
   }
   public changeColorFav(inputResult) {
-    $('#' + inputResult).text('favorite');
+    $.fn.extend({
+      toggleText: function (stateOne, stateTwo) {
+        return this.each(function () {
+          stateTwo = stateTwo || '';
+          console.log(stateOne, stateTwo, $(this).text());
+          $(this).text() !== stateTwo && stateOne
+            ? $(this).text(stateTwo)
+            : $(this).text(stateOne);
+        });
+      }
+    });
+    if ( $('#' + inputResult).text() === 'favorite_border') {
+      $('#' + inputResult).text('favorite');
+    } else {
+      $('#' + inputResult).text('favorite_border');
+      this.removeFav(inputResult);
+    }
   }
-
   searchItem(inputResult: string) {
     this._petitionItunes.searchArtist(inputResult).subscribe(
       result => {
@@ -32,12 +49,19 @@ export class IonSearchbarComponent {
       });
   }
   getTheFav(inputResult) {
-    console.log(inputResult.trackId);
     this.favSelected.push(inputResult.trackId);
     this.changeColorFav(inputResult.trackId);
     this.iconcounter = this.favSelected.length;
-    console.log(this.iconcounter);
+    console.log(this.favSelected);
   }
 
-
+  removeFav(inputResult) {
+    for (let i = 0; i < this.favSelected.length; i++) {
+      if (this.favSelected[i] === inputResult.toString()) {
+        const indexOfSelected = this.favSelected.indexOf(inputResult.toString());
+        this.favSelected.splice(indexOfSelected, 1);
+      }
+    }
+    console.log(this.favSelected);
+  }
 }
