@@ -14,8 +14,10 @@ export class IonSearchbarComponent {
   public ArtistId: any;
   public favBook: any[];
   public iconcounter;
+  public DisplayNewRelease: boolean;
 
   constructor(private _petitionItunes: PetitionsItunes) {
+    this.DisplayNewRelease = false;
   }
   public changeColorFav(inputResult) {
     $.fn.extend({
@@ -39,7 +41,7 @@ export class IonSearchbarComponent {
   searchItem(inputResult: string) {
     this._petitionItunes.searchArtist(inputResult).subscribe(
       result => {
-       return this.selectedArtist = result['results'];
+       console.log( this.selectedArtist = result['results']);
       }, error => {
         console.log(<any>error);
       });
